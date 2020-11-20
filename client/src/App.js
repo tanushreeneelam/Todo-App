@@ -23,6 +23,7 @@ function App() {
               <Navbar />
               <Switch>
                 {/* PrivateRoute */}
+                <h1>Helloooo branch1</h1>
                 <PrivateRoute exact path='/' component={Home} />
                 <Route exact path='/register' component={Register} />
                 <Route exact path='/login' component={Login} />
