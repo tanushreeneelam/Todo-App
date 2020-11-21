@@ -36,9 +36,6 @@ function Navbar() {
         </Fragment>
       );
     
-      // var padding_style={
-      //   padding-left:'2px';
-      // }
 
     return (
         <div className="navbar">
