@@ -17,9 +17,9 @@ const User = require('../models/User')
 
 router.post('/', 
 [
-    check('name', 'Please provide a name').not().isEmpty(),
-    check('email', 'Please provide an email').isEmail(),
-    check('password', 'Password at least 6 character long').isLength({ min: 6 })
+    check('name', 'Please provide a Name').not().isEmpty(),
+    check('email', 'Please provide a valid Email ID').isEmail(),
+    check('password', 'Please enter a password with at least 6 characters').isLength({ min: 6 })
 ],
 async (req,res) => {
     // console.log("----------");
@@ -36,8 +36,8 @@ async (req,res) => {
 
         let user = await User.findOne({email})
         if(user){
-            console.log('user already exists')
-            return res.status(400).json({msg:'user already exists!'})
+            // console.log('user already exists')
+            return res.status(400).json({msg:'User already exists!'})
             // return res.status(400).json({"id":user.id, "_id":user._id})
         }
 
@@ -67,7 +67,7 @@ async (req,res) => {
 
     }catch(err){
         console.error(err.message)
-        res.status(500).send('server error')
+        res.status(500).send('Server error')
     }
 })
 

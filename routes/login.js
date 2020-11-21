@@ -23,7 +23,7 @@ const User = require('../models/User')
 
 router.post('/',
   [
-    check('email', 'Please provide a valid email ID').isEmail(),
+    check('email', 'Please provide a valid Email ID').isEmail(),
     check('password', 'Please provide the password').exists()
   ],
   async (req, res) => {
@@ -63,7 +63,7 @@ router.post('/',
 
     } catch (err) {
       console.error(err.message)
-      res.status(500).send('server error')
+      res.status(500).send('Server error')
     }
 
   })

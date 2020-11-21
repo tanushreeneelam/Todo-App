@@ -1,9 +1,9 @@
 import React , {useContext} from 'react'
-import guestContext from '../../context/guestContext/guestContext';
+import TodoContext from '../../context/todoContext/todoContext';
 
-const GuestFilter = () => {
+const TodoFilter = () => {
   
-  const {toggleFilter} = useContext(guestContext);
+  const {toggleFilter} = useContext(TodoContext);
   // console.log(toggleFilter);
 
   return (
@@ -12,9 +12,9 @@ const GuestFilter = () => {
         <input type="checkbox" onChange={() => toggleFilter()}/>
         <span className="slider round"></span>
       </label>
-      <p className="lead">Show attending only!</p>
+      <p className="lead">Show incomplete only!</p>
     </div>
   )
 }
 
-export default GuestFilter
+export default TodoFilter

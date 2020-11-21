@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/register', require('./routes/register'))
 app.use('/login', require('./routes/login'))
-app.use('/guests', require('./routes/guests'))
+app.use('/todos', require('./routes/todos'))
 
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {

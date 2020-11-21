@@ -10,18 +10,19 @@ const guestSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  phone: {
+  desc: {
     type: String,
-    required: true,
+    default:''
   },
-  diet: {
+  priority: {
     type: String,
-    default: 'non-veg'
+    default: '1'
+    // required: false,
   },
-  isconfirmed: {
+  iscompleted: {
     type: Boolean,
     default: false
   }
 })
 
-module.exports = mongoose.model('guest', guestSchema)
+module.exports = mongoose.model('todo', guestSchema)

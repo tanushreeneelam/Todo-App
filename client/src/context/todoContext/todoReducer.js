@@ -1,61 +1,61 @@
 import React from 'react';
 import {
-    ADD_GUEST,
-    REMOVE_GUEST,
+    ADD_TODO,
+    REMOVE_TODO,
     CLEAR_SEARCH,
-    SEARCH_GUEST,
+    SEARCH_TODO,
     TOGGLE_FILTER,
-    UPDATE_GUEST,
-    EDIT_GUEST,
+    UPDATE_TODO,
+    EDIT_TODO,
     CLEAR_EDIT,
-    GET_GUESTS,
-    GUESTS_ERROR,
-    CLEAR_GUESTS
+    GET_TODOS,
+    TODOS_ERROR,
+    CLEAR_TODOS
 } from '../types';
 
-function guestReducer(state,action) {
+function todoReducer(state,action) {
     const {type,payload} = action;
 
     switch(type){
-        case GET_GUESTS:
+        case GET_TODOS:
             return{
                 ...state,
-                guests:payload
+                todos:payload
             }
-        case GUESTS_ERROR:
+        case TODOS_ERROR:
             return{
                 ...state,
-                guests:[],
+                todos:[],
                 errors:payload
             }
-        case CLEAR_GUESTS:
+        case CLEAR_TODOS:
             return{
                 ...state,
-                filterGuest:false,
+                filterTodo:false,
                 search:null,
                 edit:null,
-                guests:[],
+                todos:[],
                 errors : null
             }
-        case ADD_GUEST:
+        case ADD_TODO:
             return {
                 ...state,
-                guests: [...state.guests, payload]
+                todos: [...state.todos, payload]
             }
-        case REMOVE_GUEST:
+        case REMOVE_TODO:
             return {
                 ...state,
-                guests : state.guests.filter(guest => guest._id !== payload)
-            }
-        
-        //isconfirmed
-        case UPDATE_GUEST: 
-            return {
-                ...state,
-                guests : state.guests.map(guest => guest._id === payload._id ? payload : guest )
+                todos : state.todos.filter(todo => todo._id !== payload)
             }
         
-        case EDIT_GUEST:
+        //iscompleted
+        case UPDATE_TODO: 
+            return {
+                ...state,
+                todos : state.todos.map(todo => todo._id === payload._id ? payload : todo )
+            }
+        
+        case EDIT_TODO:
             return {
                 ...state,
                 edit:payload
@@ -65,11 +65,11 @@ function guestReducer(state,action) {
                 ...state,
                 edit:null
             }
-        case SEARCH_GUEST:
+        case SEARCH_TODO:
             const reg= new RegExp(`${payload}`,'gi');
             return {
                 ...state,
-                search: state.guests.filter(guest => guest.name.match(reg))
+                search: state.todos.filter(todo => todo.name.match(reg))
             }
         case CLEAR_SEARCH:
             return {
@@ -80,7 +80,7 @@ function guestReducer(state,action) {
         case TOGGLE_FILTER:
             return {
                 ...state,
-                filterGuest: !state.filterGuest
+                filterTodo: !state.filterTodo
             }
 
         default:
@@ -89,4 +89,4 @@ function guestReducer(state,action) {
     
 }
 
-export default guestReducer
+export default todoReducer

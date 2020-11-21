@@ -48,12 +48,14 @@ function Login(props) {
             </form>
             <div className="question">
                 {/* {error !== null && <button className="danger" type="button"  >{error} <span onClick={() => clearError()}>X</span></button>} */}
+                {/* {console.log("LOGIN.JS",errors )} */}
                 {errors!== null && <button className="danger">
-                    {/* {console.log("LOGIN.JS",errors )} */}
+                    
                     {/* {console.log("LOGIN.JS---",errors.msg )} */}
                     {/* {console.log("LOGIN.JS",errors.error[0].msg )} */}
-                    {errors.msg ? errors.msg : errors.error[0].msg}
+                    {/* {errors.msg ? errors.msg : errors.error[0].msg} */}
                     {/* {(JSON.parse(errors)).msg ? (JSON.parse(errors)).msg : (JSON.parse(errors)).error[0].msg } */}
+                    {errors.msg ? errors.msg : (JSON.parse(errors)).msg ? (JSON.parse(errors)).msg : (JSON.parse(errors)).error[0].msg}
                 <span onClick={()=> clearError()}>X</span></button>}
                 <p>Dont' have an accout? {" "} <Link to='/register'>Sign Up</Link></p>
             </div>

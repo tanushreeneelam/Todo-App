@@ -331,7 +331,8 @@ td {
 .card-head {
  display: flex;
  justify-content: space-between;
- align-items: baseline;
+ /* align-items: baseline; */
+ align-items: center;
  background: #ccc;
  padding: 0.2rem
 }
@@ -344,17 +345,25 @@ td {
  cursor: pointer;
 }
 .card-head i:hover  {
- color:var(--primary-color);
- opacity: 0.8;
+ /* color:var(--primary-color); */
+ color: #82cb83;
+ /* opacity: 0.8; */
  transition: all 0.1s ease 0s;
 }
+.card-head .edit:hover {
+  color:var(--primary-color);
+  opacity: 0.7;
+  transition: all 0.1s ease 0s;
+ }
+
 .card-head .remove:hover {
  color:red;
  opacity: 0.7;
  transition: all 0.1s ease 0s;
 }
 .confirm {
-color:var(--primary-color) !important;
+/* color:var(--primary-color) !important; */
+color: #82cb83 !important;
 }
 .card-head label {
   margin-right: 0.2rem
@@ -405,7 +414,7 @@ cursor: pointer;
   color: var(--primary-color);
   text-align: center;
   width:33%;
-  margin: 12rem auto;
+  margin: 9rem auto;
   }
   .clear {
    position: absolute;
