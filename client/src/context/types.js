@@ -1,10 +1,10 @@
 export const TOGGLE_FILTER ='TOGGLE_FILTER';
-export const SEARCH_GUEST ='SEARCH_GUEST';
+export const SEARCH_TODO ='SEARCH_TODO';
 export const CLEAR_SEARCH ='CLEAR_SEARCH';
-export const ADD_GUEST ='ADD_GUEST';
-export const REMOVE_GUEST ='REMOVE_GUEST';
-export const UPDATE_GUEST ='UPDATE_GUEST';
-export const EDIT_GUEST ='EDIT_GUEST';
+export const ADD_TODO ='ADD_TODO';
+export const REMOVE_TODO ='REMOVE_TODO';
+export const UPDATE_TODO ='UPDATE_TODO';
+export const EDIT_TODO ='EDIT_TODO';
 export const CLEAR_EDIT ='CLEAR_EDIT';
 
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
@@ -20,8 +20,8 @@ export const LOGOUT = 'LOGOUT';
 export const SET_USER = 'SET_USER'; //USER_LOADED
 export const AUTH_ERROR = 'AUTH_ERROR';
 
-export const GET_GUESTS = 'GET_GUESTS';
-export const GUESTS_ERROR = 'GUESTS_ERROR';
-export const CLEAR_GUESTS = 'CLEAR_GUESTS';
+export const GET_TODOS = 'GET_TODOS';
+export const TODOS_ERROR = 'TODOS_ERROR';
+export const CLEAR_TODOS = 'CLEAR_TODOS';
 
 

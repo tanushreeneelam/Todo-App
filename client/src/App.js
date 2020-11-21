@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/layouts/Navbar';
 import Home from './components/pages/Home';
-import GuestState from './context/guestContext/GuestState';
+import TodoState from './context/todoContext/TodoState';
 import AuthState from './context/authContext/AuthState';
 import Register from './components/pages/Register';
 import Login from './components/pages/Login';
@@ -17,20 +17,19 @@ if(localStorage.token){
 function App() {
   return (
     <AuthState>
-      <GuestState>
+      <TodoState>
         <Router>
             <div>
               <Navbar />
               <Switch>
                 {/* PrivateRoute */}
-                <h1>Helloooo branch1</h1>
                 <PrivateRoute exact path='/' component={Home} />
                 <Route exact path='/register' component={Register} />
                 <Route exact path='/login' component={Login} />
               </Switch>
             </div>
           </Router>
-      </GuestState>
+      </TodoState>
     </AuthState>
   );
 }

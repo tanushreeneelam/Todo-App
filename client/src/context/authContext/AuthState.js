@@ -33,7 +33,7 @@ function AuthState(props) {
         }
         try{
             const res= await axios.get('/login');
-            console.log("res>>>",res);
+            // console.log("res>>>loadUser>>>",res);
             dispatch({
                 type: SET_USER,
                 payload: res.data

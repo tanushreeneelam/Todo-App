@@ -1,116 +1,116 @@
 import React , { useReducer } from 'react'
-import GuestContext from './guestContext';
-import guestReducer from './guestReducer';
+import TodoContext from './todoContext';
+import todoReducer from './todoReducer';
 import {
     TOGGLE_FILTER,
-    SEARCH_GUEST,
+    SEARCH_TODO,
     CLEAR_SEARCH,
-    ADD_GUEST,
-    REMOVE_GUEST,
-    UPDATE_GUEST,
-    EDIT_GUEST,
+    ADD_TODO,
+    REMOVE_TODO,
+    UPDATE_TODO,
+    EDIT_TODO,
     CLEAR_EDIT,
-    GET_GUESTS,
-    GUESTS_ERROR,
-    CLEAR_GUESTS
+    GET_TODOS,
+    TODOS_ERROR,
+    CLEAR_TODOS
 } from '../types';
 import axios from 'axios';
 import setToken from '../../utils/setToken';
 
-const GuestState= (props) => {
+const TodoState= (props) => {
     
     const initialState= {
-        filterGuest:false,
+        filterTodo:false,
         search:null,
         edit:null,
-        guests:[],
+        todos:[],
         errors : null
     }
 
-    const [state,dispatch] = useReducer(guestReducer,initialState);
+    const [state,dispatch] = useReducer(todoReducer,initialState);
 
-    // get guests
-    const getGuests = async () => {
+    // get todos
+    const getTodos = async () => {
         if(localStorage.token){
             setToken(localStorage.token)
         }
         try {
-        const res = await axios.get('/guests')
+        const res = await axios.get('/todos')
         dispatch({
-            type: GET_GUESTS,
+            type: GET_TODOS,
             payload: res.data
         })
         } catch (err) {
         dispatch({
-            type: GUESTS_ERROR,
+            type: TODOS_ERROR,
             payload: err.response.msg
         })
         }
     }
 
-    const addGuest = async(guest) => {
-        // guest.id=Date.now(); will come from backend
+    const addTodo = async(todo) => {
+        // todo.id=Date.now(); will come from backend
         const config = {
             'Content-Type': 'application/json'
         }
         try {
-            // guest.isconfirmed=false; will come from backendl
-            const res = await axios.post('/guests', guest, config)
+            // todo.iscompleted=false; will come from backendl
+            const res = await axios.post('/todos', todo, config)
             dispatch({
-                type: ADD_GUEST,
+                type: ADD_TODO,
                 payload: res.data
             })
         } catch (err) {
             dispatch({
-                type: GUESTS_ERROR,
+                type: TODOS_ERROR,
                 payload: err.response.msg
             })
         }
     }
 
-    const removeGuest = async(id) => {
+    const removeTodo = async(id) => {
         try {
-            await axios.delete(`/guests/${id}`)
+            await axios.delete(`/todos/${id}`)
             dispatch({
-              type: REMOVE_GUEST,
+              type: REMOVE_TODO,
               payload: id
             })
           } catch (err) {
             dispatch({
-              type: GUESTS_ERROR,
+              type: TODOS_ERROR,
               payload: err.response.msg
             })
           }
     }
 
-    //isconfirmed 
-    const updateGuest = async(guest) => {
+    //iscompleted
+    const updateTodo = async(todo) => {
         const config = {
             headers: {
               'Content-Type': 'application/json'
             }
           }
           try {
-            const res = await axios.put(`/guests/${guest._id}`, guest, config)
+            const res = await axios.put(`/todos/${todo._id}`, todo, config)
             dispatch({
-              type: UPDATE_GUEST,
+              type: UPDATE_TODO,
               payload: res.data
             })
-            getGuests()
+            getTodos()
       
           } catch (err) {
             dispatch({
-              type: GUESTS_ERROR,
+              type: TODOS_ERROR,
               payload: err.response
             })
           }
     }
 
-    //editing name and ph etc
-    const editGuest = (guest) => {
+    //editing name and desc etc
+    const editTodo = (todo) => {
         dispatch({
-            type:EDIT_GUEST,
-            payload:guest
+            type:EDIT_TODO,
+            payload:todo
         })
     }
 
@@ -120,9 +120,9 @@ const GuestState= (props) => {
         })
     }
 
-    const clearGuests = () => {
+    const clearTodos = () => {
         dispatch({
-            type:CLEAR_GUESTS
+            type:CLEAR_TODOS
         })
     }
 
@@ -131,12 +131,12 @@ const GuestState= (props) => {
             type:TOGGLE_FILTER
         })
     }
-    // console.log(state.filterGuest);
+    // console.log(state.filterTodo);
 
-    const searchGuest = (guest) => {
+    const searchTodo = (todo) => {
         dispatch({
-            type:SEARCH_GUEST,
-            payload: guest
+            type:SEARCH_TODO,
+            payload: todo
         })
     }
 
@@ -147,26 +147,26 @@ const GuestState= (props) => {
     }
 
     return (
-        <GuestContext.Provider 
+        <TodoContext.Provider 
             value={{
-                guests: state.guests,
-                filterGuest: state.filterGuest,
+                todos: state.todos,
+                filterTodo: state.filterTodo,
                 toggleFilter,
                 search: state.search,
-                searchGuest,
+                searchTodo,
                 clearSearch,
-                addGuest,
-                removeGuest,
-                updateGuest,
-                editGuest,
+                addTodo,
+                removeTodo,
+                updateTodo,
+                editTodo,
                 clearEdit,
                 edit: state.edit,
-                getGuests,
-                clearGuests
+                getTodos,
+                clearTodos
                 }}>
             {props.children}
-        </GuestContext.Provider>
+        </TodoContext.Provider>
     )
 }
 
-export default GuestState;
+export default TodoState;

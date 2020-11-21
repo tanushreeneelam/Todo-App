@@ -38,7 +38,7 @@ function Register(props) {
         e.preventDefault()
         if (password !== password2) {
             // console.log("pswd dont match")
-            setError({ msg:'Password does not match'})
+            setError({ msg:'Passwords do not match'})
             
         } else {
             // console.log({name,email,password});
@@ -60,7 +60,7 @@ function Register(props) {
             //       console.log(err);
             //     });
         }
-        clearError();
+        // clearError();
     }
 
     return (
@@ -74,17 +74,20 @@ function Register(props) {
                 <input type="submit" value="Sign Up" className="btn" />
             </form>
             <div className="question">
-                {/* {error !== null && error.map(err => <button className="danger" type="button"  >{err.msg} <span onClick={() => clearError()}>X</span></button>)} */}
+                
                 {/* express-validator errors.error -> array but custom error mesage we send using msg ---- check backend */}
-                {errors!== null && <button className="danger">
-                {/* {console.log("REGISTER.JS",errors.msg )}  */}
+                {/* {errors!== null && console.log("REGISTER.JS-+--",errors ) && <button className="danger"> */}
+                {/* {console.log("REGISTER.JS",errors )}  */}
+                { errors!==null && <button className="danger">
                 {/* {console.log("REGISTER.JS",(JSON.parse(errors)).msg )} */}
                 {/* {console.log("REGISTER.JS",(JSON.parse(errors)).error[0].msg )} */}
                     {/* {errors.msg ? errors.msg : errors.error[0].msg} */}
                     {errors.msg ? errors.msg : (JSON.parse(errors)).msg ? (JSON.parse(errors)).msg : (JSON.parse(errors)).error[0].msg}
                     {/* {console.log(json[0].Title)} */}
                 <span onClick={()=> clearError()}>X</span></button>}
-                <p>Already have an accout? {" "} <Link to='/login'>Sign In </Link></p>
+        
+                
+                <p>Already have an account? {" "} <Link to='/login'>Sign In </Link></p>
             </div>
         </div >
     )
