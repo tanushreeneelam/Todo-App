@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AuthContext from '../../context/authContext/authContext';
-import axios from 'axios';
+// import axios from 'axios';
 
 function Register(props) {
 

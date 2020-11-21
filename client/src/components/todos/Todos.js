@@ -5,9 +5,10 @@ import Todo from './Todo'
 const Todos = () => {
 
   const {todos,filterTodo,search,getTodos} = useContext(TodoContext);
+
   useEffect( () =>{
     getTodos()
-    //eslint-diable next line
+    // eslint-disable-next-line
   }, [] )
 
   if (todos === null || todos.length === 0) {
@@ -21,7 +22,7 @@ const Todos = () => {
       { search !== null ? (filterTodo ? search.filter(todo => !filterTodo || !todo.iscompleted )
                                               .map(todo => <Todo key={todo._id} todo={todo} />) 
                                       : search.map(todo => <Todo key={todo._id} todo={todo} />) ) 
-                                      
+
                         : todos.filter(todo => !filterTodo || !todo.iscompleted )
                       .map(todo => <Todo key={todo._id} todo={todo} />) }
     </div>

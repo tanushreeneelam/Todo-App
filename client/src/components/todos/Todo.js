@@ -3,7 +3,7 @@ import TodoContext from '../../context/todoContext/todoContext';
 
 const Todo = ({todo}) => {
 
-  const {_id,name,desc,priority,iscompleted} =todo
+  const {_id,name,desc,iscompleted} =todo
   // console.log(">>>>>>>>>",todo);
   // console.log(todo.name);
 

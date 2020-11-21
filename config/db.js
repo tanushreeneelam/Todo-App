@@ -1,10 +1,16 @@
-require('dotenv').config()
+// require('dotenv').config()
+require('dotenv').config({ path: require('find-config')('.env') });
 const mongoose = require('mongoose')
 const url= process.env.URL
 
 const connectDB = async () => {
     try{
-        await mongoose.connect(url,{ useNewUrlParser:true , useUnifiedTopology:true , useCreateIndex:true , useFindAndModify:true })
+        await mongoose.connect(url, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            useCreateIndex: true,
+            useFindAndModify: false
+          })
         console.log("connected to mongoDB")
 
     }catch(err){
