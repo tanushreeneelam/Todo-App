@@ -1,11 +1,9 @@
-// require('dotenv').config()
+require('dotenv').config()
 // require('dotenv').config({ path: require('find-config')('.env') });
-var environment = require('dotenv').config();
+// var environment = require('dotenv').config();
 // console.log(environment)
 const mongoose = require('mongoose')
-const url= environment.parsed.URL
-// console.log(url)
-// const url= "mongodb+srv://Tanushree:ILoveRaffa28@rsvp.fh3wk.mongodb.net/todo-db?retryWrites=true&w=majority"
+const url= process.env.MONGO_URL
 
 const connectDB = async () => {
     try{
