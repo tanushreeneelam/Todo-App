@@ -1,8 +1,11 @@
 // require('dotenv').config()
-require('dotenv').config({ path: require('find-config')('.env') });
+// require('dotenv').config({ path: require('find-config')('.env') });
+var environment = require('dotenv').config();
+// console.log(environment)
 const mongoose = require('mongoose')
-// const url= process.env.URL
-const url= "mongodb+srv://Tanushree:ILoveRaffa28@rsvp.fh3wk.mongodb.net/todo-db?retryWrites=true&w=majority"
+const url= environment.parsed.URL
+// console.log(url)
+// const url= "mongodb+srv://Tanushree:ILoveRaffa28@rsvp.fh3wk.mongodb.net/todo-db?retryWrites=true&w=majority"
 
 const connectDB = async () => {
     try{
