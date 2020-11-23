@@ -345,8 +345,8 @@ td {
  cursor: pointer;
 }
 .card-head i:hover  {
- /* color:var(--primary-color); */
- color: #82cb83;
+ color:var(--primary-color);
+ /* color: #82cb83; */
  /* opacity: 0.8; */
  transition: all 0.1s ease 0s;
 }
@@ -414,7 +414,7 @@ cursor: pointer;
   color: var(--primary-color);
   text-align: center;
   width:33%;
-  margin: 9rem auto;
+  margin: 8.3rem auto;
   }
   .clear {
    position: absolute;
